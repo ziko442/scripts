@@ -14,7 +14,8 @@ sudo pacman -S --noconfirm iptables-nft
 # git, curl, wget: Downloading and version control
 # neovim: Terminal text editor
 # fastfetch: System information display
-sudo pacman -S --noconfirm git curl wget neovim fastfetch qbittorrent vlc discord bash-completion
+sudo pacman -S --noconfirm git curl wget neovim fastfetch qbittorrent discord bash-completion p7zip unrar vlc vlc-plugins-all mpv
+
 
 # 3. Install Yay (AUR Helper)
 # Needed for Google Chrome and official VS Code
