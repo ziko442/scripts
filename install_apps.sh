@@ -11,11 +11,11 @@ sudo pacman -S --noconfirm base linux linux-firmware amd-ucode \
 
 # 3. Desktop Environment (KDE Plasma)
 sudo pacman -S --noconfirm plasma-meta plasma-workspace \
-  dolphin konsole ark gwenview
+  dolphin konsole gwenview
 
 # 4. Networking & Connectivity
 sudo pacman -S --noconfirm networkmanager network-manager-applet \
-  iwd wireless_tools bluez bluez-utils openvpn aria2
+  iwd wireless_tools bluez bluez-utils openvpn aria2 iptables
 
 # 5. Development Tools
 sudo pacman -S --noconfirm base-devel git neovim \
@@ -24,15 +24,15 @@ sudo pacman -S --noconfirm base-devel git neovim \
 
 # 6. Terminal & Shell Enhancements
 sudo pacman -S --noconfirm bash-completion starship tmux \
-  htop ncdu less nano fastfetch wl-clipboard xdg-utils
+  htop ncdu less nano fastfetch wl-clipboard xdg-utils wget
 
 # 7. Audio / Video / Graphics
 # PipeWire audio
 sudo pacman -S --noconfirm pipewire pipewire-alsa pipewire-jack \
-  pipewire-pulse wireplumber gst-plugin-pipewire libpulse
+  pipewire-pulse wireplumber gst-plugin-pipewire libpulse sof-firmware
 
 # Media players & tools
-sudo pacman -S --noconfirm mpv vlc vlc-plugins-all obs-studio yt-dlp
+sudo pacman -S --noconfirm mpv vlc vlc-plugins-all yt-dlp
 
 # GPU drivers (AMD)
 sudo pacman -S --noconfirm vulkan-radeon rocm-opencl-runtime \
@@ -62,7 +62,6 @@ yay -S --noconfirm --needed \
   google-chrome \
   visual-studio-code-bin \
   onlyoffice-bin \
-  windsurf \
   anydesk-bin \
   antigravity
 
@@ -80,9 +79,11 @@ sudo systemctl enable --now libvirtd
 sudo virsh net-autostart default 2>/dev/null
 sudo virsh net-start default 2>/dev/null
 
-# 14. Enable NetworkManager and Bluetooth
+# 14. Enable NetworkManager, Bluetooth, Ollama, and PostgreSQL
 sudo systemctl enable --now NetworkManager
 sudo systemctl enable --now bluetooth
+sudo systemctl enable --now ollama
+sudo systemctl enable --now postgresql
 
 # 15. Fonts
 sudo pacman -S --noconfirm ttf-jetbrains-mono-nerd \
@@ -92,7 +93,7 @@ sudo pacman -S --noconfirm ttf-jetbrains-mono-nerd \
 sudo pacman -S --noconfirm zram-generator
 
 # 17. AI & Development Tools
-sudo pacman -S --noconfirm opencode
+sudo pacman -S --noconfirm opencode ollama
 
 # 18. Permissions & Fixes
 chmod +x /home/$USER
